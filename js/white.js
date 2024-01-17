@@ -150,7 +150,7 @@ audio.addEventListener('timeupdate', () => {
 
 
 function fetchMusic() {
-  fetch('https://api.uomg.com/api/rand.music?mid=2791573169&format=json')
+  fetch('https://api.uomg.com/api/rand.music?mid=9107237950&format=json')
     .then(response => response.json())
     .then(data => {
       audio.src = data.data.url + '.mp3';
