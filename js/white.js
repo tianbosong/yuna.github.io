@@ -110,3 +110,55 @@ function loadImg(el) {
 window.onload = window.onscroll = function () { //onscroll()在滚动条滚动的时候触发
   check();
 }
+
+const audio = document.getElementById('audio');
+const playButton = document.getElementById('play');
+const nextButton = document.getElementById('next');
+const cover = document.getElementById('cover');
+const name = document.getElementById('name');
+const artist = document.getElementById('artist');
+const progress = document.getElementById('progress'); // 获取进度条的引用
+
+playButton.addEventListener('click', () => {
+  if (audio.paused) {
+    audio.play();
+    playButton.innerHTML = '<i class="ri-pause-line"></i>'; // 播放时显示暂停图标
+  } else {
+    audio.pause();
+    playButton.innerHTML = '<i class="ri-play-fill"></i>'; // 暂停时显示播放图标
+  }
+});
+
+nextButton.addEventListener('click', () => {
+  fetchMusic();
+});
+audio.addEventListener('play', () => {
+  cover.classList.add('rotating');
+});
+
+audio.addEventListener('play', () => {
+  cover.style.animationPlayState = 'running';
+});
+
+audio.addEventListener('pause', () => {
+  cover.style.animationPlayState = 'paused';
+});
+
+audio.addEventListener('timeupdate', () => {
+  progress.value = (audio.currentTime / audio.duration) * 100; // 更新进度条的值
+});
+
+
+function fetchMusic() {
+  fetch('https://api.uomg.com/api/rand.music?mid=2791573169&format=json')
+    .then(response => response.json())
+    .then(data => {
+      audio.src = data.data.url + '.mp3';
+      cover.src = data.data.picurl;
+      name.textContent = data.data.name;
+      artist.textContent = data.data.artistsname;
+      audio.play();
+    });
+}
+
+fetchMusic();
