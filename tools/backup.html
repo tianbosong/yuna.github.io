@@ -139,24 +139,23 @@
     </div>
 
     <div class="body-outer">
-        <div class="body-inner" style=" margin-top: 150px; margin-bottom: 150px;">
+        <div class="body-inner">
+            <div class="form-container" style=" margin-top: 150px; margin-bottom: 150px;">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="text" required>
 
-            <h2 id="music-player">Music Player</h2>
-            <!-- Music player code goes here -->
-            <div id="player" style="margin-top: 30px; margin-bottom: 20px;">
-                <img id="cover" src="" alt="Cover">
-                <div id="info">
-                    <p id="name" class="song-title"></p>
-                    <p id="artist" class="song-artist"></p>
-                </div>
-                <div id="controls">
-                    <audio id="audio"></audio>
-                    <button id="play"><i class="ri-play-fill"></i></button>
-                    <button id="next"><img src="/img/skip-right-fill.svg" alt=""></button>
-                </div>
+                <label for="contact">Contact:</label>
+                <input type="text" id="contact" name="text">
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="text" required></textarea>
+
+                <button type="button" onclick="submitForm()">Submit</button>
             </div>
-            <progress id="progress" value="0" max="100"></progress> <!-- 移动到了这里 -->
+
         </div>
+    </div>
+    </div>
     </div>
 
 

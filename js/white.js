@@ -162,3 +162,26 @@ function fetchMusic() {
 }
 
 fetchMusic();
+
+function submitForm() {
+  var name = document.getElementById('name').value;
+  var contact = document.getElementById('contact').value;
+  var message = document.getElementById('message').value;
+
+  var combinedMessage = 'Name: ' + name + ', Contact: ' + contact + ', Message: ' + message;
+
+  // 使用Telegram API发送消息
+  var url = 'https://api.telegram.org/bot6278451607:AAFGTvyAAutybKorjkvylUzucYGhdVvMh3g/sendMessage?chat_id=6181680412&text=' + encodeURIComponent(combinedMessage);
+
+  fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      alert('Message sent successfully');
+    })
+    .catch(error => {
+      console.error('There has been a problem with your fetch operation:', error);
+      alert('Failed to send message');
+    });
+}
